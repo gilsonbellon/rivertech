@@ -1,0 +1,14 @@
+docker-compose exec kafka kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic staging-bets
+
+docker-compose exec kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic staging-bets
+
+docker-compose exec kafka kafka-topics --list --bootstrap-server localhost:9092
+
+docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
+
+CREATE STREAM staging_bets (created_timestamp VARCHAR, game_instance_id BIGINT, user_id VARCHAR,
+game_id BIGINT, real_amount_bet DOUBLE, bonus_amount_bet DOUBLE, real_amount_win DOUBLE, bonus_amount_win DOUBLE, game_name VARCHAR, provider VARCHAR) \
+WITH (VALUE_FORMAT = 'JSON', KAFKA_TOPIC = 'staging-bets');
+
+
+SET 'auto.offset.reset'='earliest';

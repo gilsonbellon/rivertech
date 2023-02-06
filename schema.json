@@ -1,0 +1,16 @@
+{
+    "type": "record",
+    "name": "GameRound",
+    "fields": [
+        {"name": "created_timestamp", "type": ["null", "string"]},
+        {"name": "game_instance_id", "type": "long"},
+        {"name": "user_id", "type": ["null", "string"]},  
+        {"name": "game_id", "type": ["null", "long"]},
+        {"name": "real_amount_bet", "type": ["null", "float"]},
+        {"name": "bonus_amount_bet", "type": ["null", "float"]},
+        {"name": "real_amount_win", "type": ["null", "float"]},
+        {"name": "bonus_amount_win", "type": ["null", "float"]},
+        {"name": "game_name", "type": ["null", "string"]},
+        {"name": "provider", "type": ["null", "string"]}
+    ]
+}
